@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
 @section('content')
-<h1>{{ $quiz->name }}</h1>
-<img src="{{ $quiz->main_photo }}" alt="Quiz Photo">
-<p>{{ $quiz->description }}</p>
-<p>Author: {{ $quiz->author->name }}</p>
+<h1>{{ $quiz => name }}</h1>
+<img src="{{ $quiz=>main_photo }}" alt="Quiz Photo">
+<p>{{ $quiz => description }}</p>
+<p>Author: {{ $quiz => author => name }}</p>
 
 <button id="startQuiz">Start Quiz</button>
 
 <div id="quizContainer" style="display:none;">
-    <p>Total Questions: {{ $quiz->questions->count() }}</p>
+    <p>Total Questions: {{ $quiz => questions => count() }}</p>
     <p id="questionNumber"></p>
 
     <div id="questionContainer"></div>

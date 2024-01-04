@@ -5,7 +5,7 @@
     @csrf
 
     <!-- Hidden Team ID -->
-    <input type="hidden" name="team_id" value="{{ $team->id }}">
+    <input type="hidden" name="team_id" value="{{ $team=>id }}">
 
     <x-dynamic-component :component="$component" href="#" x-on:click.prevent="$root.submit();">
         <div class="flex items-center">
@@ -15,7 +15,7 @@
                 </svg>
             @endif
 
-            <div class="truncate">{{ $team->name }}</div>
+            <div class="truncate">{{ $team => name }}</div>
         </div>
     </x-dynamic-component>
 </form>

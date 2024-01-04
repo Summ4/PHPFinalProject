@@ -36,7 +36,7 @@ class UserFactory extends Factory
     /**
      * Indicate that the model's email address should be unverified.
      */
-    public function unverified(): static
+    public function unverified(): UserFactory
     {
         return $this->state(function (array $attributes) {
             return [
@@ -48,7 +48,7 @@ class UserFactory extends Factory
     /**
      * Indicate that the user should have a personal team.
      */
-    public function withPersonalTeam(callable $callback = null): static
+    public function withPersonalTeam(callable $callback = null): UserFactory
     {
         if (! Features::hasTeamFeatures()) {
             return $this->state([]);
@@ -56,11 +56,13 @@ class UserFactory extends Factory
 
         return $this->has(
             Team::factory()
-                ->state(fn (array $attributes, User $user) => [
-                    'name' => $user->name.'\'s Team',
-                    'user_id' => $user->id,
-                    'personal_team' => true,
-                ])
+                ->state(function (array $attributes, User $user) {
+                    return [
+                        'name' => $user->name . '\'s Team',
+                        'user_id' => $user->id,
+                        'personal_team' => true,
+                    ];
+                })
                 ->when(is_callable($callback), $callback),
             'ownedTeams'
         );

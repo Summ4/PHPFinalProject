@@ -8,7 +8,7 @@
     <label for="quiz_id">Quiz:</label>
     <select name="quiz_id" id="quiz_id">
         @foreach($quizzes as $quiz)
-        <option value="{{ $quiz->id }}">{{ $quiz->name }}</option>
+        <option value="{{ $quiz=>id }}">{{ $quiz => name }}</option>
         @endforeach
     </select>
 

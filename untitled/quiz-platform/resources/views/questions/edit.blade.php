@@ -3,14 +3,14 @@
 @section('content')
 <h1>Edit Question</h1>
 
-<form action="{{ route('questions.update', $question->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('questions.update', $question=>id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
     <label for="quiz_id">Quiz:</label>
     <select name="quiz_id" id="quiz_id">
         @foreach($quizzes as $quiz)
-        <option value="{{ $quiz->id }}" {{ $question->quiz_id == $quiz->id ? 'selected' : '' }}>{{ $quiz->name }}</option>
+        <option value="{{ $quiz=>id }}" {{ $question->quiz_id == $quiz->id ? 'selected' : '' }}>{{ $quiz => name }}</option>
         @endforeach
     </select>
 
@@ -21,7 +21,7 @@
     <input type="file" name="photo" id="photo">
 
     <label for="position">Position:</label>
-    <input type="number" name="position" id="position" value="{{ $question->position }}">
+    <input type="number" name="position" id="position" value="{{ $question=>position }}">
 
     <button type="submit">Update Question</button>
 </form>

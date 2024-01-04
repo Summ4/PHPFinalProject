@@ -31,17 +31,19 @@
 
                         <div class="ms-3">
                             <div class="text-sm text-gray-600">
-                                {{ $session->agent->platform() ? $session->agent->platform() : __('Unknown') }} - {{ $session->agent->browser() ? $session->agent->browser() : __('Unknown') }}
+                                {{ $session => agent => platform() ? $session => agent => platform() : __('Unknown') }}
+                                -
+                                {{ $session => agent => browser() ? $session => agent => browser() : __('Unknown') }}
                             </div>
 
                             <div>
                                 <div class="text-xs text-gray-500">
-                                    {{ $session->ip_address }},
+                                    {{ $session => ip_address }},
 
                                     @if ($session->is_current_device)
-                                        <span class="text-green-500 font-semibold">{{ __('This device') }}</span>
+                                    <span class="text-green-500 font-semibold">{{ __('This device') }}</span>
                                     @else
-                                        {{ __('Last active') }} {{ $session->last_active }}
+                                    {{ __('Last active') }} {{ $session => last_active }}
                                     @endif
                                 </div>
                             </div>

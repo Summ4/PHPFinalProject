@@ -4,12 +4,12 @@
 <h1>Edit Quiz</h1>
 
 @auth
-<form action="{{ route('quizzes.update', $quiz->id) }}" method="POST" enctype="multipart/form-data">
+<form action="{{ route('quizzes.update', $quiz=>id) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
     <label for="name">Quiz Name:</label>
-    <input type="text" name="name" id="name" value="{{ old('name', $quiz->name) }}" required>
+    <input type="text" name="name" id="name" value="{{ old('name', $quiz=>name) }}" required>
 
     <label for="description">Description:</label>
     <textarea name="description" id="description" rows="4" required>{{ old('description', $quiz->description) }}</textarea>
